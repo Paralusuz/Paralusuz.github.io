@@ -2,22 +2,40 @@
   /* variables */
   --cg-black: rgb(30, 32, 32);
   --cg-select: rgb(255, 200, 36);
-  --cg-red: rgb(92, 30, 30);
+  --cg-brightred: rgb(110, 40, 40);
+  --cg-red: rgb(61, 26, 26);
   --cg-tint: rgb(240, 240, 240);
+  --cg-black: rgb(19, 20, 20);
   --cg-white: rgb(255, 255, 255);
+  --cg-accent: rgb(255, 200, 36);
 }
 
 html {
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background: var(--cg-tint);
+  background-color: var(--cg-black);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  animation: hex-scroll 20s linear infinite;
   position: relative;
   min-height: 100vh;
   padding: 0;
   margin: 0;
   font-family: Georgia;
+  color: var(--cg-white);
+}
+
+@keyframes hex-scroll {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 56px 98px;
+  }
 }
 
 /* CSS for navigation */
@@ -35,7 +53,7 @@ body {
   align-items: center;
   text-align: center;
 
-  background-color: var(--cg-red);
+  background: linear-gradient(to bottom, var(--cg-brightred), var(--cg-red));
   color: var(--cg-white);
   padding: 0px 0px;
 
@@ -74,7 +92,18 @@ body {
 }
 
 .logo a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-family: Georgia;
+  padding-left: 20px;
+}
+
+.logo-icon {
+  height: 0.85em;
+  width: auto;
+  display: block;
+  padding-right: 5px;
 }
 
 .logo a:hover {
@@ -82,7 +111,7 @@ body {
 }
 
 main {
-  padding: 0 20px 40px 20px;
+  padding: 20px 20px 40px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -92,20 +121,26 @@ main {
 .page-title {
   display: flex;
   justify-content: flex-start;
+  width: 100%;
   font-size: 30px;
   font-family: Georgia;
+  color: var(--cg-white);
 }
 
 /* CSS for portfolio grid */
 
 .project {
-  display: flex;
-  flex-direction: row;
-  max-width: 100%;
-  margin: 1em 0 2em 0;
+  background-color: var(--cg-white);
+  border-top: 6px solid crimson;
+  border-radius: 5px;
+  padding: 20px;
+  align-items: center;
+}
 
-  /* Debug border */
-  /* border: 2px solid blue; */
+.project-details,
+.project-name,
+.project-description {
+  color: var(--cg-black);
 }
 
 .item-link {
@@ -173,9 +208,10 @@ main {
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  background-color: #f8f8f8;
+  background-color: var(--cg-black);
   border: 1px solid #ccc;
   border-radius: 5px;
+  border-top: 6px solid var(--cg-accent);
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
 }
 
@@ -188,6 +224,7 @@ main {
 .about-text {
   flex: 1;
   margin-left: 20px;
+  color: var(--cg-white);
 }
 
 .about-text h2 {
@@ -196,7 +233,7 @@ main {
 }
 
 .about-text p {
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.5;
 }
 
@@ -221,6 +258,11 @@ main {
 
 .resume h2 {
   font-family: Georgia;
+  color: var(--cg-white);
+}
+
+.resume-download {
+  align-self: flex-start;
 }
 
 /* CSS for contact form */
@@ -263,4 +305,5 @@ form {
   width: 100%;
   height: 2.5rem;
   padding-left: 25px;
+  box-sizing: border-box;
 }
